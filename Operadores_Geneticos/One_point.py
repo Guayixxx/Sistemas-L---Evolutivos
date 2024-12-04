@@ -1,5 +1,6 @@
-import random
+# One_point.py
 
+import random
 
 def one_point_crossover(parent1, parent2):
     point = random.randint(1, len(parent1) - 1)

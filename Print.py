@@ -1,3 +1,5 @@
+# Print.py
+
 import turtle
 
 from Fitness import *
@@ -8,9 +10,9 @@ from Operadores_Geneticos.Tournament import *
 
 # Definición de los parámetros
 angle = 22.5
-iterations = 3
-population_size = 100
-generations = 50
+iterations = 5
+population_size = 20
+generations = 500
 mutation_rate = 0.01
 rule_length = 20
 
@@ -57,25 +59,24 @@ for generation in range(generations):
     best_individual = population[fitness_scores.index(max(fitness_scores))]
     print(f"Generación {generation + 1}: {best_individual}")
 
-    # Dibujar el mejor resultado cada 10 generaciones
-    if (generation + 1) % 10 == 0:
-        axiom = "F"  # Axioma inicial
-        rules = {"F": best_individual}  # Usa la mejor regla como la producción de F
-        lsystem_string = apply_rules(axiom, rules, iterations)
+# Dibujar el mejor individuo al final
+axiom = "F"  # Axioma inicial
+rules = {"F": best_individual}  # Usa la mejor regla como la producción de F
+lsystem_string = apply_rules(axiom, rules, iterations)
 
-        # Configurar turtle
-        t = turtle.Turtle()
-        wn = turtle.Screen()
-        wn.setup(width=800, height=800)
-        wn.title(f"Generación {generation + 1}: Mejor Resultado")
-        t.speed(0)
-        t.penup()
-        t.goto(0, -300)
-        t.pendown()
-        t.left(90)
+# Configurar turtle
+t = turtle.Turtle()
+wn = turtle.Screen()
+wn.setup(width=800, height=800)
+wn.title("Mejor Resultado Final")
+t.speed(0)
+t.penup()
+t.goto(0, -300)
+t.pendown()
+t.left(90)
 
-        # Dibujar el sistema L
-        draw_lsystem(t, lsystem_string, angle, distance=5)
+# Dibujar el sistema L
+draw_lsystem(t, lsystem_string, angle, distance=20)
 
-        # Pausar hasta que el usuario cierre la ventana
-        turtle.done()
+# Mantener la ventana abierta para ver el dibujo final
+turtle.done()
